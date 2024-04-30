@@ -58,4 +58,16 @@ class MySpider(Spider):
             document_id_element = self.driver.find_element(By.XPATH, '//*[@id="contentsHeader"]/tbody/tr[1]/td[1]')
             document_id = document_id_element.text
             pyperclip.copy(document_id)
-            self.driver.find_element(By.CSS_SELECTOR, "a[onclick='
+            self.driver.find_element(By.CSS_SELECTOR, "a[onclick='printDoc();return false;']").click()
+
+            time.sleep(2)
+            self.driver.close()
+            self.driver.switch_to.window(self.driver.window_handles[0])
+
+            # Click to return to the document list and wait for elements
+            self.driver.find_element(By.ID, "listApprDocButton").click()
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, "td.subject a"))
+            )
+            
+            title_index += 1  # Move to the next title
