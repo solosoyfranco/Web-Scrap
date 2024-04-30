@@ -36,24 +36,27 @@ Ensure you have Python installed on your system. This project requires setting u
 Run Chrome in debugging mode to allow Selenium to control it:
 
 ```bash
-  /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="/tmp/chrome_dev_session"
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="/tmp/chrome_dev_session"
+```
 
-Usage
 
-    Start the Scrapy project (if not already created):
+### Usage
+
+Start the Scrapy project (if not already created):
 
 ```bash
 
 scrapy startproject webportal_scraper  
-
+```
 List available spiders (to verify setup):
 
 ```bash
 
 scrapy list
-
+```
 Run the spider:
 
 ```bash
 
 scrapy runspider portal_spider.py
+```
